@@ -6,6 +6,7 @@ import javafx.application.Platform;
 import javafx.stage.Stage;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContextInitializer;
+import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 
@@ -32,8 +33,8 @@ public class IntranetProjectApplication extends Application {
     }
 
     @Override
-    public void start(Stage stage) throws Exception {
-
+    public void start(Stage primaryStage) throws Exception {
+        this.context.publishEvent(new StageReadyEvent(primaryStage));
     }
 
 	@Override
@@ -41,4 +42,15 @@ public class IntranetProjectApplication extends Application {
 		this.context.close();
 		Platform.exit();
 	}
+}
+
+class StageReadyEvent extends ApplicationEvent {
+
+    public Stage getStage(){
+        return Stage.class.cast(getSource());
+    }
+
+    public StageReadyEvent(Stage source) {
+        super(source);
+    }
 }

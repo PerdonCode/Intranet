@@ -11,3 +11,6 @@ spring:
 
   main:
     web-application-type: none
+  application:
+    ui:
+      title: Intranet Backend Application
