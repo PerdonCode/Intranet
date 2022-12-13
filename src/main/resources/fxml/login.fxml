@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane layoutY="4.0" prefHeight="506.0" prefWidth="286.0" style="-fx-background-color: red;">
+               <children>
+                  <Text fill="#f2f2f2" layoutX="42.0" layoutY="175.0" lineSpacing="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="medewerker">
+                     <font>
+                        <Font size="37.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#f2f2f2" layoutX="89.0" layoutY="261.0" lineSpacing="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="login">
+                     <font>
+                        <Font size="43.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#f2f2f2" layoutX="93.0" layoutY="345.0" lineSpacing="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="page">
+                     <font>
+                        <Font size="39.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="269.0" layoutY="3.0" prefHeight="509.0" prefWidth="432.0">
+               <children>
+                  <TextField layoutX="123.0" layoutY="173.0" promptText="voorbeeld@gmail.com" style="-fx-background-color: transparant; -fx-border-color: red; -fx-border-width: 0px 0px 2px 0px;" />
+                  <PasswordField layoutX="123.0" layoutY="255.0" promptText="wachtwoord" style="-fx-background-color: transparant; -fx-border-color: red; -fx-border-width: 0px 0px 2px 0px;" />
+                  <Button layoutX="184.0" layoutY="333.0" mnemonicParsing="false" text="Login" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

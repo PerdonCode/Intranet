@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jbdc.Driver
+    password: donderwolk1
+    username: root
+    url: jdbc:mysql://localhost:3301/intranet?serverTimezone=UTC
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  main:
+    web-application-type: none
