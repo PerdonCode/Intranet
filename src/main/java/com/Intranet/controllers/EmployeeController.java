@@ -1,6 +1,6 @@
 package com.Intranet.controllers;
 
-import com.Intranet.classes.Employee;
+import com.Intranet.entity.Employee;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
