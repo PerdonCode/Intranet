@@ -17,7 +17,7 @@ public class EmployeeController {
 
 private EmployeeService employeeService;
 
-    @GetMapping("/lists")
+    @GetMapping("/list")
     public String listEmployees(Model theModel){
         // get employees from db
         List<Employee> theEmployees = employeeService.findAll();
