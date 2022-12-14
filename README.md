@@ -62,6 +62,17 @@ manager:
 - crud producten 
 - mensen ontslaan / aannemen 
 - Overzicht hoe het in een bepaalde periode is gegaan kwa sales en kosten en of doelen zijn gehaald door middel van grafieken.
+
+ADD EMPLOYEE
+door het in te vullen van voornaam, achternaam en afdeling word er automatisch een mail aangemaakt en een random password gegenereerd
+naam: Niels
+achternaam: perdon
+afdeling: sales
+email : niels.perdon-sales@PerdonCode.com
+pasword: ***********
+
+vervolgens moet de nieuwe employee zelf de resterende persoonlijke informatie toebogen via zijn of haar profiel.
+
  
 
 
