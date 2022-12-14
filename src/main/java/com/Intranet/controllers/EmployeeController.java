@@ -31,7 +31,7 @@ public class EmployeeController {
        theEmployees.add(emp2);
        theEmployees.add(emp3);
     }
-    @GetMapping("/list")
+    @GetMapping("/lists")
     public String listEmployees(Model theModel){
        // add to the spring model
         theModel.addAttribute("employees", theEmployees);
