@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Save Employee</title>
+</head>
+<body>
+<div class="container">
+    <h3>Employee Directory</h3>
+    <hr>
+    <p class="h4 mb-4">Save Employee</p>
+    <p class="h4 mb-4">Work email and random password will be generated automatically</p>
+
+    <form action="#" th:action="@{/employee/save}" th:object="${employee}" method="POST">
+
+        <input type="text" th:field="*{first_name}" class="form-control mb-4 col4" placeholder="First Name">
+        <input type="text" th:field="*{last_name}" class="form-control mb-4 col4" placeholder="Last Name">
+        <input type="text" th:field="*{Address}" class="form-control mb-4 col4" placeholder=" Address">
+        <input type="text" th:field="*{phone_number}" class="form-control mb-4 col4" placeholder="phone_number ">
+        <select th:field="*{department_name}"  class="form-control mb-4 col4">
+            <option th:each="p : ${listDepartment}" th:value="${p}" th:text="${p}" class="form-control mb-4 col4"></option>
+        </select>
+        <select th:field="*{User_Role}" class="form-control mb-4 col4" placeholder="User_Role ">
+            <option th:each="p : ${ListUser_Role}" th:value="${p}" th:text="${p}" class="form-control mb-4 col4"></option>
+        </select>
+        <input type="text" th:field="*{Salary}" class="form-control mb-4 col4" placeholder="Salary ">
+        <button type="submit" class="btn btn-info col-2">Save</button>
+    </form>
+
+    <hr>
+    <a th:href="@{/employees/list}"> back to employee list</a>
+</div>
+</body>
+</html>

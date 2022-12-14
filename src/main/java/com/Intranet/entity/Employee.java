@@ -16,15 +16,16 @@ import javax.persistence.*;
 public class Employee {
 
     // define fields
+    private int defaultPasswordLength = 12;
+    private String companySuffix = "@PerdonCode.com";
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "employee_id")
     private int employee_id;
-
     @Column(name = "first_name")
     private String first_name;
-
     @Column(name = "last_name")
     private String last_name;
 
@@ -39,7 +40,6 @@ public class Employee {
 
     @Column(name = "phone_number")
     private String phone_number;
-
     @Column(name = "department_name")
     private String department_name;
 
@@ -48,6 +48,31 @@ public class Employee {
 
     @Column(name = "Salary")
     private int Salary;
+    @Column(name = "password")
+    private String password;
+
+    public Employee(String firstName, String lastName) {
+        this.first_name = firstName;
+        this.last_name = lastName;
+
+        // call method asking for department - return department
+        this.department_name = department_name;
+        this.password = randomPassword(defaultPasswordLength);
+        this.Work_Email = firstName.toLowerCase() +  "." + lastName.toLowerCase() + "-" + department_name + "@" + companySuffix;
+    }
+
+    private String randomPassword(int length){
+        String passwordSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!$@%#^&*";
+        char[] password = new char[length];
+        for (int i = 0; i<length; i++){
+            int randomValue =  (int) (Math.random() * passwordSet.length());
+            password[i] = passwordSet.charAt(randomValue);
+        }
+        return new String(password);
+    }
+    public void changePassword(String password){
+        this.password = password;
+    }
 
 }
 

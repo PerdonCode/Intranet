@@ -10,4 +10,6 @@ class IntranetProjectApplicationTests {
 	void contextLoads() {
 	}
 
+	// write test for add employee label department and user_role has to be the same  or + MANAGER
+
 }
