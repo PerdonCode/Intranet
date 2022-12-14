@@ -17,6 +17,7 @@
     <table  class="table table-bordered table-striped">
         <thead class="thead-dark">
         <tr>
+            <th>EmployeeId</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>work_Email</th>
@@ -29,12 +30,13 @@
         </thead>
         <tbody>
         <tr th:each="tempEmployee : ${employees}">
-            <td th:text="${tempEmployee.FirstName}"></td>
-            <td th:text="${tempEmployee.LastName}"></td>
+            <td th:text="${tempEmployee.employee_id}"></td>
+            <td th:text="${tempEmployee.first_name}"></td>
+            <td th:text="${tempEmployee.last_name}"></td>
             <td th:text="${tempEmployee.Work_Email}"></td>
             <td th:text="${tempEmployee.Address}"></td>
-            <td th:text="${tempEmployee.PhoneNumber}"></td>
-            <td th:text="${tempEmployee.DepartmentName}"></td>
+            <td th:text="${tempEmployee.phone_number}"></td>
+            <td th:text="${tempEmployee.department_name}"></td>
             <td th:text="${tempEmployee.User_Role}"></td>
             <td th:text="${tempEmployee.Salary}"></td>
 

@@ -9,10 +9,10 @@ public interface EmployeeService {
 
 	public List<Employee> findAll();
 	
-	public Employee findById(int theId);
+	public Employee findById(int employee_id);
 	
 	public void save(Employee theEmployee);
 	
-	public void deleteById(int theId);
+	public void deleteById(int employee_id);
 	
 }
