@@ -73,6 +73,15 @@ pasword: ***********
 
 vervolgens moet de nieuwe employee zelf de resterende persoonlijke informatie toebogen via zijn of haar profiel.
 
+afdeling labels moeten in verband staan met elkaar
+dus waneer er als afdeling sales is uitgekozen 
+kan er bij User_Role alleen gekozen worden uit sales of manager_sales
+
+bij de normale functie en de manager functie word of functie gelijk een salaris in de database gezet.
+de standaard salaris voor sales is bijvoorbeeld : 2750
+en voor de manager : 3750
+in dit geval zal de nieuwe employee een salaris hebben van 2750
+
  
 
 
