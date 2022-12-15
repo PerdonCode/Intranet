@@ -3,8 +3,10 @@ package com.Intranet.repositories;
 import com.Intranet.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
-// no code needed
+public List<Employee> findAllByOrderByDepartmentAsc();
 	
 }

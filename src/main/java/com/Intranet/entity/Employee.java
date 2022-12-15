@@ -34,8 +34,8 @@ public class Employee {
 
     @Column(name = "phone_number")
     private String phone_number;
-    @Column(name = "department_name")
-    private String department_name;
+    @Column(name = "department")
+    private String department;
 
     @Column(name = "User_Role")
     private String User_Role;
@@ -50,9 +50,9 @@ public class Employee {
         this.last_name = getLast_name();
 
         // call method asking for department - return department
-        this.department_name = getDepartment_name();
+        this.department = getDepartment();
         this.password = randomPassword(12);
-        this.Work_Email = first_name +  "." + last_name + "-" + department_name + "@PerdonCode.com";
+        this.Work_Email = first_name +  "." + last_name + "-" + department + "@PerdonCode.com";
     }
         // generate random password for new employee
     private String randomPassword(int length){

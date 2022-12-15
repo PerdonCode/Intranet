@@ -19,7 +19,7 @@
         <input type="text" th:field="*{first_name}" class="form-control mb-4 col4" placeholder="First Name">
         <input type="text" th:field="*{last_name}" class="form-control mb-4 col4" placeholder="Last Name">
         <!-- label where you choose from department -->
-        <select th:field="*{department_name}" class="form-control mb-4 col4">
+        <select th:field="*{department}" class="form-control mb-4 col4">
             <option th:each="p : ${listDepartment}" th:value="${p}" th:text="${p}" class="form-control mb-4 col4"></option>
         </select>
         <!-- label where you choose from User_Role  -->
