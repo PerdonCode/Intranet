@@ -2,7 +2,6 @@ package com.Intranet.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -11,11 +10,9 @@ import javax.persistence.*;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "Employee")
 public class Employee {
-
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
     @GenericGenerator(name = "native",strategy = "native")
@@ -47,6 +44,26 @@ public class Employee {
     private int Salary;
     @Column(name = "password")
     private String password;
+
+    public Employee() {
+        this.first_name = getFirst_name();
+        this.last_name = getLast_name();
+
+        // call method asking for department - return department
+        this.department_name = getDepartment_name();
+        this.password = randomPassword(12);
+        this.Work_Email = first_name +  "." + last_name + "-" + department_name + "@PerdonCode.com";
+    }
+        // generate random password for new employee
+    private String randomPassword(int length){
+        String passwordSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!$@%#^&*";
+        char[] password = new char[length];
+        for (int i = 0; i<length; i++){
+            int randomValue =  (int) (Math.random() * passwordSet.length());
+            password[i] = passwordSet.charAt(randomValue);
+        }
+        return new String(password);
+    }
 }
 
 
