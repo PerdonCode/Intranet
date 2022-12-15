@@ -14,21 +14,19 @@
     <h3>Employee Directory</h3>
     <hr>
     <p class="h4 mb-4">Save Employee</p>
-    <p class="h4 mb-4">Work email and random password will be generated automatically</p>
 
-    <form action="#" th:action="@{/employee/save}" th:object="${employee}" method="POST">
-
+    <form action="#" th:action="@{/employees/save}" th:object="${employee}" method="POST">
         <input type="text" th:field="*{first_name}" class="form-control mb-4 col4" placeholder="First Name">
         <input type="text" th:field="*{last_name}" class="form-control mb-4 col4" placeholder="Last Name">
-        <input type="text" th:field="*{Address}" class="form-control mb-4 col4" placeholder=" Address">
-        <input type="text" th:field="*{phone_number}" class="form-control mb-4 col4" placeholder="phone_number ">
-        <select th:field="*{department_name}"  class="form-control mb-4 col4">
+        <!-- label where you choose from department -->
+        <select th:field="*{department_name}" class="form-control mb-4 col4">
             <option th:each="p : ${listDepartment}" th:value="${p}" th:text="${p}" class="form-control mb-4 col4"></option>
         </select>
-        <select th:field="*{User_Role}" class="form-control mb-4 col4" placeholder="User_Role ">
-            <option th:each="p : ${ListUser_Role}" th:value="${p}" th:text="${p}" class="form-control mb-4 col4"></option>
+        <!-- label where you choose from User_Role  -->
+        <select th:field="*{User_Role}" class="form-control mb-4 col4">
+            <option th:each="p : ${ListUser_Role}" th:value="${p}" th:text="${p}"
+                    class="form-control mb-4 col4"></option>
         </select>
-        <input type="text" th:field="*{Salary}" class="form-control mb-4 col4" placeholder="Salary ">
         <button type="submit" class="btn btn-info col-2">Save</button>
     </form>
 
