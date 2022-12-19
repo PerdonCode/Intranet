@@ -39,19 +39,55 @@ public class EmployeeController {
         theModel.addAttribute("listDepartment", listDepartment);
 
         // get the data from the chosen listDepartment
-        List<String> ListUser_Role = List.of("HR", "MANAGER_HR", "SUPPORT", "MANAGER_SUPPORT", "MAGAZIJN", "MANAGER_MAGAZIJN", "FINANCE", "MANAGER_FINANCE", "IT", "MANAGER_IT","MARKETING", "MANAGER_MARKETING");
+        List<String> ListUser_Role = List.of("HR", "MANAGER_HR", "SUPPORT", "MANAGER_SUPPORT", "MAGAZIJN", "MANAGER_MAGAZIJN", "FINANCE", "MANAGER_FINANCE", "IT", "MANAGER_IT", "MARKETING", "MANAGER_MARKETING");
 
         theModel.addAttribute("ListUser_Role", ListUser_Role);
 
         return "employees/employee-form";
     }
 
+
+    @GetMapping("/showFormForUpdateEmployee")
+    public String showFormForUpdate(@RequestParam() int employeeId, Model theModel) {
+        // get the employee from the service
+        Employee theEmployee = employeeService.findById(employeeId);
+
+        // set employee as a model attribute to pre-populate form
+        theModel.addAttribute("employee", theEmployee);
+
+        // send over to our form
+        return "employees/employee-form";
+    }
+
     @PostMapping("/save")
-    public String saveEmployee(@ModelAttribute("employee") Employee theEmployee){
+    public String saveEmployee(@ModelAttribute("employee") Employee theEmployee) {
         // save employee
         employeeService.save(theEmployee);
 
         // use redirect to prevent duplicate submissions
         return "redirect:/employees/list";
     }
+
+    @PostMapping("/delete")
+    public String deleteEmployee(@ModelAttribute("employee") int employeeId) {
+        // save employee
+        employeeService.deleteById(employeeId);
+
+        // use redirect to prevent duplicate submissions
+        return "employees/list";
+    }
+
+    @GetMapping("/search")
+    public String search(String keyword, Model theModel) {
+        if (keyword != null) {
+            List<Employee> list = employeeService.getByKeyword(keyword);
+            theModel.addAttribute("list", list);
+        } else {
+            List<Employee> list = employeeService.findAll();
+            theModel.addAttribute("list", list);
+        }
+        return "employees/list-employees";
+    }
 }
+
+

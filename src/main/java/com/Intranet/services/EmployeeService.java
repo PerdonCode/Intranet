@@ -14,5 +14,7 @@ public interface EmployeeService {
 	public void save(Employee theEmployee);
 	
 	public void deleteById(int employee_id);
+
+	public List<Employee> getByKeyword(String keyword);
 	
 }

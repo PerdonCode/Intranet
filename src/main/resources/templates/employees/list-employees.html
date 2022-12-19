@@ -20,6 +20,14 @@
        class="btn btn-primary btn-sm mb-3">
         Add Employee
     </a>
+
+    <!-- search form -->
+    <form th:action="@{/employees/search}" method="get">
+        <input type="text" name="keyword" th:value="@{keyword}" placeholder="find by name or user_role" size="50">
+        <button type="submit" class="btn btn-info mb-2">Search</button>
+        <button type="submit" class="btn btn-info mb-2">Reset</button>
+    </form>
+
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
         <tr>
@@ -28,6 +36,7 @@
             <th>work_Email</th>
             <th>phone-number</th>
             <th>user_role</th>
+            <th>action</th>
         </tr>
         </thead>
         <tbody>
@@ -37,6 +46,15 @@
             <td th:text="${tempEmployee.Work_Email}"></td>
             <td th:text="${tempEmployee.phone_number}"></td>
             <td th:text="${tempEmployee.User_Role}"></td>
+            <!-- update user-->
+            <td>
+                <a th:href="@{/employees/showFormForUpdateEmployee(employeeId=${tempEmployee.id})}"
+                   class="btn btn-info btn-sm">
+                    update
+                </a>
+
+                <a th:href="@{/employees/delete/{id}(id=${tempEmployee.id})}" ><i class="fa fa-remove"></i></a>
+            </td>
         </tr>
         </tbody>
     </table>

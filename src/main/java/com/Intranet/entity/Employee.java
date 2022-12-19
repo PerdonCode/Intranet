@@ -16,8 +16,8 @@ public class Employee {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
     @GenericGenerator(name = "native",strategy = "native")
-    @Column(name = "employee_id")
-    private int employee_id;
+    @Column(name = "id")
+    private int id;
     @Column(name = "first_name")
     private String first_name;
     @Column(name = "last_name")

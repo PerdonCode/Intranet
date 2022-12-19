@@ -50,6 +50,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 		employeeRepository.deleteById(employee_id);
 	}
 
+	public List<Employee> getByKeyword(String keyword){
+		return employeeRepository.findByKeyword(keyword);
+	}
 }
 
 
