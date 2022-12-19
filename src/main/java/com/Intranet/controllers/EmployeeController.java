@@ -68,13 +68,13 @@ public class EmployeeController {
         return "redirect:/employees/list";
     }
 
-    @PostMapping("/delete")
-    public String deleteEmployee(@ModelAttribute("employee") int employeeId) {
+    @GetMapping("/delete")
+    public String deleteEmployee(@RequestParam() int employeeId) {
         // save employee
         employeeService.deleteById(employeeId);
 
         // use redirect to prevent duplicate submissions
-        return "employees/list";
+        return "redirect:/employees/list";
     }
 
     @GetMapping("/search")

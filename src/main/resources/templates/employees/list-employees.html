@@ -7,6 +7,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <title>Employee Directory</title>
 </head>
 <body>
@@ -22,8 +24,8 @@
     </a>
 
     <!-- search form -->
-    <form th:action="@{/employees/search}" method="get">
-        <input type="text" name="keyword" th:value="@{keyword}" placeholder="find by name or user_role" size="50">
+    <form th:action="@{/employees/search}" method="GET">
+        <input type="text" name="keyword" th:value="@{keyword}" placeholder="find by name or user_role" size="30">
         <button type="submit" class="btn btn-info mb-2">Search</button>
         <button type="submit" class="btn btn-info mb-2">Reset</button>
     </form>
@@ -46,14 +48,17 @@
             <td th:text="${tempEmployee.Work_Email}"></td>
             <td th:text="${tempEmployee.phone_number}"></td>
             <td th:text="${tempEmployee.User_Role}"></td>
-            <!-- update user-->
+
             <td>
+                <!-- update user-->
                 <a th:href="@{/employees/showFormForUpdateEmployee(employeeId=${tempEmployee.id})}"
                    class="btn btn-info btn-sm">
                     update
                 </a>
-
-                <a th:href="@{/employees/delete/{id}(id=${tempEmployee.id})}" ><i class="fa fa-remove"></i></a>
+                <!-- delete user-->
+                <a th:href="@{/employees/delete(employeeId=${tempEmployee.id})}"
+                   onclick="if (!(confirm('Are you sure you want to delete this employee?'))) return false"
+                   class="btn btn-danger btn-sm">Delete</a>
             </td>
         </tr>
         </tbody>
