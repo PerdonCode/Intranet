@@ -24,14 +24,11 @@
     </a>
 
     <!-- search form -->
-    <form th:action="@{/employees/search}" method="GET">
-        <input type="text" name="keyword" th:value="@{keyword}" placeholder="find by name or user_role" size="30">
-        <button type="submit" class="btn btn-info mb-2">Search</button>
-        <button type="submit" class="btn btn-info mb-2">Reset</button>
-    </form>
+    <input id="txtSearch" type="text" name="keyword" th:value="@{keyword}" placeholder="find by name or user_role"
+           size="30">
 
-    <table class="table table-bordered table-striped">
-        <thead class="thead-dark">
+    <table id="employeeTable" class="table table-bordered table-striped text-center">
+        <thead class="thead-dark text-center">
         <tr>
             <th>First Name</th>
             <th>Last Name</th>
@@ -64,5 +61,47 @@
         </tbody>
     </table>
 </div>
+<!-- javascripts -->
+<script th:inline="javascript">
+      /*<![CDATA[*/
+    var employees = /*[[${employees}]]*/;
+
+
+    $('#txtSearch').on('keyup', function(){
+    var value = $(this).val();
+    console.log('Value  = ' + value);
+
+    });
+
+    function FilterFunction(value, data){
+        var filteredData =[];
+        for(var i = 0; i<data.length; i++){
+            value =value.toLowerCase();
+            var fname = data[i].firstname.toLowerCase();
+            var lname = data[i].lastname.toLowerCase();
+
+            if(fname.includes(value) || lname.includes(value)){
+                filteredData.push(data[i]);
+            }
+        }
+    return filteredData;
+    }
+
+    function rebuildTable( data){
+        var table  =document.getElementById('employeeTable')
+        table.innerHTML = ''
+        for(var i = 0; i<data.length; i++){
+            var row = <tr>
+                          <td>${data[i].first_name}</td>
+                          <td>${data[i].last_name}</td>
+                          <td>${data[i].Work_Email}</td>
+                          <td>${data[i].phone_number}</td>
+                          <td>${data[i].User_Role}</td>
+                        </tr>
+                        table.innerHTML += row
+        }
+    }
+/*]]>*/
+</script>
 </body>
 </html>

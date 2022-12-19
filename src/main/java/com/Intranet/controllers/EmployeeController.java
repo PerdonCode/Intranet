@@ -77,7 +77,7 @@ public class EmployeeController {
         return "redirect:/employees/list";
     }
 
-    @GetMapping("/search")
+    @RequestMapping("/search")
     public String search(String keyword, Model theModel) {
         if (keyword != null) {
             List<Employee> list = employeeService.getByKeyword(keyword);
