@@ -7,7 +7,6 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <title>Employee Directory</title>
 </head>
@@ -24,8 +23,13 @@
     </a>
 
     <!-- search form -->
-    <input id="txtSearch" type="text" name="keyword" th:value="@{keyword}" placeholder="find by name or user_role"
-           size="30">
+    <form action="/search" method="get">
+        <label for="name">Search by name:</label><br>
+        <input type="text" id="name" name="fname"><br>
+        <input type="submit" value="Submit">
+    </form>
+
+
 
     <table id="employeeTable" class="table table-bordered table-striped text-center">
         <thead class="thead-dark text-center">
@@ -40,7 +44,7 @@
         </thead>
         <tbody>
         <tr th:each="tempEmployee : ${employees}">
-            <td th:text="${tempEmployee.first_name}"></td>
+            <td th:text="${tempEmployee.fname}"></td>
             <td th:text="${tempEmployee.last_name}"></td>
             <td th:text="${tempEmployee.Work_Email}"></td>
             <td th:text="${tempEmployee.phone_number}"></td>
@@ -61,47 +65,11 @@
         </tbody>
     </table>
 </div>
-<!-- javascripts -->
-<script th:inline="javascript">
-      /*<![CDATA[*/
-    var employees = /*[[${employees}]]*/;
-
-
-    $('#txtSearch').on('keyup', function(){
-    var value = $(this).val();
-    console.log('Value  = ' + value);
-
-    });
-
-    function FilterFunction(value, data){
-        var filteredData =[];
-        for(var i = 0; i<data.length; i++){
-            value =value.toLowerCase();
-            var fname = data[i].firstname.toLowerCase();
-            var lname = data[i].lastname.toLowerCase();
-
-            if(fname.includes(value) || lname.includes(value)){
-                filteredData.push(data[i]);
-            }
-        }
-    return filteredData;
+<!-- javascript -->
+<script type="text/javascript">
+    function clearSearch() {
+        window.location = "[[@{/}]]";
     }
-
-    function rebuildTable( data){
-        var table  =document.getElementById('employeeTable')
-        table.innerHTML = ''
-        for(var i = 0; i<data.length; i++){
-            var row = <tr>
-                          <td>${data[i].first_name}</td>
-                          <td>${data[i].last_name}</td>
-                          <td>${data[i].Work_Email}</td>
-                          <td>${data[i].phone_number}</td>
-                          <td>${data[i].User_Role}</td>
-                        </tr>
-                        table.innerHTML += row
-        }
-    }
-/*]]>*/
 </script>
 </body>
 </html>

@@ -15,6 +15,5 @@ public interface EmployeeService {
 	
 	public void deleteById(int employee_id);
 
-	public List<Employee> getByKeyword(String keyword);
-	
+	List<Employee> findByName(String name);
 }

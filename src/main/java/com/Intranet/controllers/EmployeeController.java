@@ -76,16 +76,10 @@ public class EmployeeController {
         // use redirect to prevent duplicate submissions
         return "redirect:/employees/list";
     }
-
-    @RequestMapping("/search")
-    public String search(String keyword, Model theModel) {
-        if (keyword != null) {
-            List<Employee> list = employeeService.getByKeyword(keyword);
-            theModel.addAttribute("list", list);
-        } else {
-            List<Employee> list = employeeService.findAll();
-            theModel.addAttribute("list", list);
-        }
+    @GetMapping("/search")
+    public String search(@RequestParam("name") String name, Model model) {
+        List<Employee> employee = employeeService.findByName(name);
+        model.addAttribute("employee", employee);
         return "employees/list-employees";
     }
 }
