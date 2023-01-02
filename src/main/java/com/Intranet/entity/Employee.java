@@ -18,8 +18,8 @@ public class Employee {
     @GenericGenerator(name = "native",strategy = "native")
     @Column(name = "id")
     private int id;
-    @Column(name = "first_name")
-    private String first_name;
+    @Column(name = "fname")
+    private String fname;
     @Column(name = "last_name")
     private String last_name;
 
@@ -46,13 +46,13 @@ public class Employee {
     private String password;
 
     public Employee() {
-        this.first_name = getFirst_name();
+        this.fname = getFname();
         this.last_name = getLast_name();
 
         // call method asking for department - return department
         this.department = getDepartment();
         this.password = randomPassword(12);
-        this.Work_Email = first_name +  "." + last_name + "-" + department + "@PerdonCode.com";
+        this.Work_Email = fname +  "." + last_name + "-" + department + "@PerdonCode.com";
     }
         // generate random password for new employee
     private String randomPassword(int length){
